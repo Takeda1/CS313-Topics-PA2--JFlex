@@ -11,7 +11,7 @@ Parameter = [:jletterdigit:]+
 WhiteSpace = [ \r\t\f]
 
 %%
-
+/* These are the actual tokens getting scanned */
 [:digit:]+ { return new Yytoken(Integer.parseInt(yytext()),lineNum); }
 "@" { return new Yytoken("at",lineNum,true); }
 "<-" { return new Yytoken("larrow",lineNum,true); }
@@ -54,5 +54,3 @@ WhiteSpace = [ \r\t\f]
 {Parameter} { return new Yytoken(yytext(),lineNum); }
 [\n] { lineNum += 1; }
 {WhiteSpace} { /* Ignore Whitespace */ }
-"-" { return new Yytoken('-',lineNum); }
-"," { return new Yytoken(',',lineNum); }
